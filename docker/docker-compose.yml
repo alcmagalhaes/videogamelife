@@ -1,0 +1,69 @@
+users:
+ build: users
+ ports:
+  - "8080"
+ links:
+  - mongodb-users
+videogames:
+ build: videogames
+ ports:
+  - "8080"
+ links:
+  - mongodb-videogames
+games-collection:
+ build: games-collection
+ ports:
+  - "8080"
+ links:
+  - mongodb-games-collection
+games-wishlist:
+ build: games-wishlist
+ ports:
+  - "8080"
+ links:
+  - mongodb-games-wishlist
+vg-collection:
+ build: vg-collection
+ ports:
+  - "8080"
+ links:
+  - mongodb-vg-collection
+vg-wishlist:
+ build: vg-wishlist
+ ports:
+  - "8080"
+ links:
+  - mongodb-vg-wishlist
+
+games:
+ build: games
+ ports:
+  - "8080"
+ links:
+  - mysqldb-games
+
+mongodb-users:
+ image: mongo
+mongodb-videogames:
+ image: mongo
+mongodb-games-collection:
+ image: mongo
+mongodb-games-wishlist:
+ image: mongo
+mongodb-vg-collection:
+ image: mongo
+mongodb-vg-wishlist:
+ image: mongo
+
+mysqldb-games:
+ image: mysql:5.7
+ environment:
+  - MYSQL_ROOT_PASSWORD=1q2w3e
+  - MYSQL_DATABASE=videogamelife_games
+
+ha_users:
+ image: tutum/haproxy
+ links:
+   - users
+ ports:
+   - "8080:80"

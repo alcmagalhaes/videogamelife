@@ -1,0 +1,28 @@
+buildscript {
+  
+  repositories {
+    jcenter()
+  }
+  
+  dependencies {
+   classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE'
+  }
+  
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+repositories { 
+  jcenter() 
+}
+
+dependencies {
+  compile "org.springframework.boot:spring-boot-starter-actuator"
+  compile "org.springframework.boot:spring-boot-starter-web"
+  compile "org.springframework.data:spring-data-mongodb"
+  compile "joda-time:joda-time:2.9.4"
+  compile "com.fasterxml.jackson.datatype:jackson-datatype-joda"
+}
